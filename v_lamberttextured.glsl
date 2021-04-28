@@ -1,0 +1,26 @@
+#version 330
+
+//Zmienne jednorodne
+uniform mat4 P;
+uniform mat4 V;
+uniform mat4 M;
+
+//Atrybuty
+layout (location=0) in vec4 vertex; //wspolrzedne wierzcholka w przestrzeni modelu
+layout (location=1) in vec4 normal; //wektor normalny w wierzcholku
+layout (location=2) in vec2 texCoord0; //wspó³rzêdne teksturowania
+
+
+//Zmienne interpolowane
+out vec2 i_tc;
+out float i_nl;
+
+void main(void) {
+    vec4 lightDir = vec4(0,0,1,0);
+    mat4 G=mat4(inverse(transpose(mat3(M))));
+    vec4 n=normalize(V*G*normal);
+
+    i_nl=clamp(dot(n,lightDir),0,1);
+    i_tc=texCoord0;
+    gl_Position=P*V*M*vertex;
+}
