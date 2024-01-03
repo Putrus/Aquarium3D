@@ -1,7 +1,6 @@
 3Dproject.vcxproj
 3Dproject.vcxproj.filters 
 3Dproject.vcxproj.user
-dupa
 Debug
 Models
 Textures
@@ -9,3 +8,7 @@ x64
 glad.c
 lodepng.cpp
 lodepng.h
+.vs
+.git
+include
+lib
